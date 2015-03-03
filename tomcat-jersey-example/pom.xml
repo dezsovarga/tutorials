@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>net.gazsi.laszlo.sandbox</groupId>
+    <groupId>net.dezso.varga.rest_example</groupId>
     <artifactId>tomcat-jersey-example</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
@@ -26,10 +26,38 @@
             <artifactId>jersey-servlet</artifactId>
             <version>1.18.1</version>
         </dependency>
+
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>eclipselink</artifactId>
+            <version>2.5.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-json</artifactId>
+            <version>1.8</version>
+        </dependency>
+
+
     </dependencies>
 
+
     <build>
-        <finalName>sandbox</finalName>
+        <finalName>jersey_rest_example</finalName>
     </build>
 
 
