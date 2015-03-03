@@ -19,7 +19,7 @@ public class UserController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{id}")
-    public String read(@PathParam("id") long id) {
+    public User read(@PathParam("id") long id) {
         long start = System.currentTimeMillis();
         System.out.println("EmployeeController.read() started");
 //        EntityManager em = LocalEntityManagerFactory.createEntityManager();
@@ -30,7 +30,7 @@ public class UserController {
         try {
             //return em.find(User.class, id);
 
-            return user.getFirstName();
+            return user;
         } finally {
 //            em.close();
             System.out.println("Getting data took " + (System.currentTimeMillis() - start) + "ms.");
