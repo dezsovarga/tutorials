@@ -20,7 +20,7 @@ public class JSONService {
 
 		Track track = new Track();
 		track.setTitle("Enter Sandman");
-		track.setSinger("Metallica");
+		track.setSinger("Metallicaqqq");
 
 		return track;
 

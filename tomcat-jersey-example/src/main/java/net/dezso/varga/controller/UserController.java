@@ -22,15 +22,15 @@ public class UserController {
     public User read(@PathParam("id") long id) {
         long start = System.currentTimeMillis();
         System.out.println("EmployeeController.read() started");
-//        EntityManager em = LocalEntityManagerFactory.createEntityManager();
-        User user = new User();
+        EntityManager em = LocalEntityManagerFactory.createEntityManager();
+        /*User user = new User();
         user.setId(id);
         user.setFirstName("first");
-        user.setLastName("last");
+        user.setLastName("last");*/
         try {
-            //return em.find(User.class, id);
+            return em.find(User.class, id);
 
-            return user;
+//            return user;
         } finally {
 //            em.close();
             System.out.println("Getting data took " + (System.currentTimeMillis() - start) + "ms.");
