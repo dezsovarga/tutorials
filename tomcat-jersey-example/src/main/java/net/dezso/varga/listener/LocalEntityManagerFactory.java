@@ -16,7 +16,7 @@ public class LocalEntityManagerFactory implements ServletContextListener {
 	private static EntityManagerFactory emf;
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
-		emf = Persistence.createEntityManagerFactory("UserPU");
+		emf = Persistence.createEntityManagerFactory("jpa-example");
 	}
 	@Override
 	public void contextDestroyed(ServletContextEvent event) {
