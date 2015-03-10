@@ -2,6 +2,7 @@ package net.dezso.varga.controller;
 
 import net.dezso.varga.listener.LocalEntityManagerFactory;
 import net.dezso.varga.model.User;
+import net.dezso.varga.utils.DBUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -11,6 +12,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,12 +25,13 @@ public class UserController {
         long start = System.currentTimeMillis();
         System.out.println("EmployeeController.read() started");
         EntityManager em = LocalEntityManagerFactory.createEntityManager();
-        /*User user = new User();
-        user.setId(id);
-        user.setFirstName("first");
-        user.setLastName("last");*/
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource("mockData/users.xml").getFile());
+        User user = DBUtils.populateUsersFromXml(file);
+
         try {
-            return em.find(User.class, id);
+            //return em.find(User.class, id);
+            return user;
 
 //            return user;
         } finally {
@@ -39,11 +42,14 @@ public class UserController {
 
     public static void main(String ...args) {
         Map props = new HashMap();
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EmployeePU", props);
-        User emp = emf.createEntityManager().find(User.class, new Long(23411));
-        if (emp != null) {
-            System.out.println("Your user is: " + emp.getFirstName() + " " + emp.getLastName());
-        }
-        emf.close();
+        ClassLoader classLoader = UserController.class.getClassLoader();
+        File file = new File(classLoader.getResource("mockData/users.xml").getFile());
+        DBUtils.populateUsersFromXml(file);
+//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa-example",props);
+//        User emp = emf.createEntityManager().find(User.class, new Long(3));
+//        if (emp != null) {
+//            System.out.println("Your user is: " + emp.getFirstName() + " " + emp.getLastName());
+//        }
+//        emf.close();
     }
 }

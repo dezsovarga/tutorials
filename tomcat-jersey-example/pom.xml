@@ -35,11 +35,11 @@
             <version>1.19</version>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>persistence-api</artifactId>
             <version>1.0.2</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -72,6 +72,12 @@
 
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <finalName>jersey_rest_example</finalName>
         <plugins>
             <plugin>
