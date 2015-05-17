@@ -3,6 +3,7 @@ import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
+import javax.xml.transform.sax.SAXSource;
 
 public class SendMail
 {
@@ -48,21 +49,33 @@ public class SendMail
         players.add(new Player("Istuu",6817));
         players.add(new Player("Lui",5593));
 
-       /* players.add(new Player("kuplung",6215));
+        players.add(new Player("kuplung",6215));
         players.add(new Player("szury",5400));
         players.add(new Player("Lukacs",5097));
-        players.add(new Player("Attila",5450));*/
+        players.add(new Player("Attila",5450));
 
-        players.add(new Player("berti",4345));
+        /*players.add(new Player("berti",4345));
         players.add(new Player("sanyecki",3925));
         players.add(new Player("Lukacs",5097));
-        players.add(new Player("Zsolt Rozsa",4150));
+        players.add(new Player("Zsolt Rozsa",4150));*/
 
         Team team1 = Utils.generateRandomTeam(players,players.size()/2,"team1");
         Team team2 = Utils.generateRandomTeam(players,players.size(),"team2");
 
+        /*Player randomPlayer = team1.getRandomPlayer();
+        System.out.println("Random player from team 1: " + randomPlayer);
+        System.out.println("Weaker Player from team 2: " + team2.getPlayerWeakerThan(randomPlayer));*/
+
+        Utils.equalizeTeams(team1, team2);
+
         System.out.println(team1);
         System.out.println(team2);
+
+        /*Utils.switchPlayer(randomPlayer, team1, team2);
+
+        System.out.println(team1);
+        System.out.println(team2);*/
+
 
 		/*// Recipient's email ID needs to be mentioned.
 		String to = "dezso.varga.vd@gmail.com";

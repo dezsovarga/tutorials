@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by dezsovarga on 5/7/15.
@@ -22,6 +23,21 @@ public class Team {
 
     public int getTeamSize(){
         return players.size();
+    }
+
+    public Player getRandomPlayer(){
+        Random randomGenerator = new Random();
+        int randomIndex = randomGenerator.nextInt(players.size());
+        return players.get(randomIndex);
+    }
+
+    public Player getPlayerWeakerThan(Player player){
+        for (Player playerItem:players){
+            if (playerItem.getSkill()< player.getSkill()){
+                return playerItem;
+            }
+        }
+        return players.get(0);
     }
 
     public int getSkillSum(){
