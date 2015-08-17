@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -6,7 +7,34 @@ import java.util.Random;
  */
 public class Utils {
 
-    public static Team generateRandomTeam(ArrayList<Player> players, int teamSize, String teamName){
+    public static List<Player> getRegisteredPlayers(List<String> playerNames, List<Player> allPlayers){
+        List<Player> registeredPlayers = new ArrayList<Player>();
+
+        //adding new players directly to registered players list
+        for (String playerName: playerNames){
+            if (playerName.contains(" ") ){
+                String playerItems[] = playerName.split(" ");
+                String name = playerItems[0];
+                int skill = Integer.parseInt(playerItems[1]);
+                registeredPlayers.add(new Player(name,skill));
+                playerNames.remove(playerName);
+            }
+        }
+
+        for (Player player:allPlayers){
+
+            for (String playerName:playerNames){
+                if (player.getName().toUpperCase().contains(playerName.toUpperCase())){
+                    registeredPlayers.add(player);
+                }
+            }
+
+        }
+
+        return registeredPlayers;
+    }
+
+    public static Team generateRandomTeam(List<Player> players, int teamSize, String teamName){
         Team team = new Team(teamName);
 //        int teamSize = players.size()/2;
         int playersSize = players.size();
@@ -29,9 +57,18 @@ public class Utils {
         team2.addPlayer(player);
     }
 
-    public static int equalizeTeams(Team team1, Team team2){
+    public static int equalizeTeams(Team team1, Team team2, List<Player> registeredPlayers){
         int triedIndex = 0;
-        while (Math.abs(team1.getSkillSum() - team2.getSkillSum()) >100){
+        int versionIndex = 0;
+        //Team team1_ = null;
+        //Team team2_= null;
+        int diff = 300;
+        int minDiff = 200;
+        List<Player> team1_ = null;
+        List<Player> team2_ = null;
+
+        triedIndex = 0;
+        while (Math.abs(team1.getSkillSum() - team2.getSkillSum()) >= minDiff){
             if (team1.getSkillSum() > team2.getSkillSum()){
                 Player randomPlayer = team1.getRandomPlayer();
                 Player weakerPlayer = team2.getPlayerWeakerThan(randomPlayer);
@@ -49,8 +86,16 @@ public class Utils {
                 System.out.println("Breaking out");
                 break;
             }
-
+            diff = Math.abs(team1.getSkillSum() - team2.getSkillSum());
+            if (diff < minDiff) {
+                minDiff = diff;
+                team1_ = team1.players;
+                team2_ = team2.players;
+            }
         }
+
+//        team1 = team1_;
+//        team2 = team2_;
         System.out.println("Tried: "+ triedIndex);
         System.out.println("Team difference: "+Math.abs(team1.getSkillSum() - team2.getSkillSum()));
         return triedIndex;

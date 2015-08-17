@@ -26,6 +26,75 @@
 		<artifactId>mail</artifactId>
 		<version>1.4</version>
 	</dependency>
+
+      <dependency>
+          <groupId>com.google.gdata</groupId>
+          <artifactId>core</artifactId>
+          <version>1.47.1</version>
+      </dependency>
+
+      <dependency>
+          <groupId>com.google.apis</groupId>
+          <artifactId>google-api-services-oauth2</artifactId>
+          <version>v2-rev93-1.20.0</version>
+      </dependency>
+
+      <dependency>
+          <groupId>com.google.api-ads</groupId>
+          <artifactId>ads-lib</artifactId>
+          <version>1.17.0</version>
+      </dependency>
+
+      <dependency>
+          <groupId>com.sun.jersey</groupId>
+          <artifactId>jersey-server</artifactId>
+          <version>1.19</version>
+      </dependency>
+      <dependency>
+          <groupId>com.sun.jersey</groupId>
+          <artifactId>jersey-client</artifactId>
+          <version>1.19</version>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.httpcomponents</groupId>
+          <artifactId>httpcore</artifactId>
+          <version>4.4-beta1</version>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.httpcomponents</groupId>
+          <artifactId>httpclient</artifactId>
+          <version>4.4-beta1</version>
+      </dependency>
+      <dependency>
+          <groupId>org.json</groupId>
+          <artifactId>json</artifactId>
+          <version>20141113</version>
+      </dependency>
+
+
+      <!--<dependency>
+          <groupId>com.google.api.client</groupId>
+          <artifactId>google-api-client-auth-oauth2</artifactId>
+          <version>1.2.3-alpha</version>
+      </dependency>
+
+      <dependency>
+          <groupId>com.google.http-client</groupId>
+          <artifactId>google-http-client-jackson2</artifactId>
+          <version>1.20.0</version>
+      </dependency>-->
+
+     <!-- <dependency>
+          <groupId>com.google.api-ads</groupId>
+          <artifactId>ads-lib</artifactId>
+          <version>2.2.0</version>
+      </dependency>
+      <dependency>
+          <groupId>com.google.api-ads</groupId>
+          <artifactId>adwords-axis</artifactId>
+          <version>2.2.0</version>
+      </dependency>-->
+
   </dependencies>
  
   <build>
