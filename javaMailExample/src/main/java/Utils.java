@@ -59,16 +59,7 @@ public class Utils {
 
     public static int equalizeTeams(Team team1, Team team2, List<Player> registeredPlayers){
         int triedIndex = 0;
-        int versionIndex = 0;
-        //Team team1_ = null;
-        //Team team2_= null;
-        int diff = 300;
-        int minDiff = 200;
-        List<Player> team1_ = null;
-        List<Player> team2_ = null;
-
-        triedIndex = 0;
-        while (Math.abs(team1.getSkillSum() - team2.getSkillSum()) >= minDiff){
+        while (Math.abs(team1.getSkillSum() - team2.getSkillSum()) >= 200){
             if (team1.getSkillSum() > team2.getSkillSum()){
                 Player randomPlayer = team1.getRandomPlayer();
                 Player weakerPlayer = team2.getPlayerWeakerThan(randomPlayer);
@@ -86,16 +77,9 @@ public class Utils {
                 System.out.println("Breaking out");
                 break;
             }
-            diff = Math.abs(team1.getSkillSum() - team2.getSkillSum());
-            if (diff < minDiff) {
-                minDiff = diff;
-                team1_ = team1.players;
-                team2_ = team2.players;
-            }
+
         }
 
-//        team1 = team1_;
-//        team2 = team2_;
         System.out.println("Tried: "+ triedIndex);
         System.out.println("Team difference: "+Math.abs(team1.getSkillSum() - team2.getSkillSum()));
         return triedIndex;
