@@ -25,6 +25,12 @@ public class Team {
         return players.size();
     }
 
+    public Team(Team team){
+
+        this.name = team.name;
+        this.players.addAll(team.players);
+    }
+
     public Player getRandomPlayer(){
         Random randomGenerator = new Random();
         int randomIndex = randomGenerator.nextInt(players.size());
@@ -52,7 +58,7 @@ public class Team {
     public String toString(){
         String s="Team " + name + " - "+getSkillSum() +"\n";
         for (Player player:players){
-            s=s+(player.toString()+"\n");
+            s=s+(player.toString()/*+"\n"*/);
         }
         return s;
     }

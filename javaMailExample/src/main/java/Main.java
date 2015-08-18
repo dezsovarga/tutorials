@@ -25,10 +25,13 @@ public class Main
         System.out.println("Random player from team 1: " + randomPlayer);
         System.out.println("Weaker Player from team 2: " + team2.getPlayerWeakerThan(randomPlayer));*/
 
-        Utils.equalizeTeams(team1, team2, registeredPlayers);
+        List<TeamPair> teamPairs = Utils.equalizeTeams(team1, team2, registeredPlayers);
 
-        System.out.println(team1);
-        System.out.println(team2);
+        for (TeamPair teamP:teamPairs){
+                System.out.println(teamP);
+        }
+//        System.out.println(team1);
+//        System.out.println(team2);
 
         /*Utils.switchPlayer(randomPlayer, team1, team2);
 
