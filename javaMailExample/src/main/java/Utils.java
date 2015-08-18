@@ -59,7 +59,7 @@ public class Utils {
 
     public static int equalizeTeams(Team team1, Team team2, List<Player> registeredPlayers){
         int triedIndex = 0;
-        while (Math.abs(team1.getSkillSum() - team2.getSkillSum()) >= 200){
+        while (Math.abs(team1.getSkillSum() - team2.getSkillSum()) >= 300){
             if (team1.getSkillSum() > team2.getSkillSum()){
                 Player randomPlayer = team1.getRandomPlayer();
                 Player weakerPlayer = team2.getPlayerWeakerThan(randomPlayer);

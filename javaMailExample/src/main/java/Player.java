@@ -28,6 +28,6 @@ public class Player {
     }
 
     public String toString(){
-        return name + " - " + skill;
+        return name /*+ " - " + skill*/;
     }
 }

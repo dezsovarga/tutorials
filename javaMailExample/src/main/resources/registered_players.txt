@@ -1,5 +1,4 @@
 szury
-horvathkuki
 Karoly
 vinitor
 csabesz
@@ -7,6 +6,5 @@ pistike
 dezsovarga
 kuplung
 berti
-Lukacs
-NewPlayer 5500
 Istuu
+Lukacs
