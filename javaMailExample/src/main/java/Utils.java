@@ -57,28 +57,6 @@ public class Utils {
         team2.addPlayer(player);
     }
 
-//    private static String saveTeamSnapShot(Team team){
-//
-//        String teamSnapShot = "";
-//        for (Player player: team.players){
-//            teamSnapShot = teamSnapShot + player.toString()+";";
-//        }
-//
-//        return teamSnapShot;
-//    }
-//
-//    private static void loadTeamSnapShot(String teamSnapShot, Team team){
-//
-//        String parts[] = teamSnapShot.split(";");
-//        ArrayList<Player> playersList = new ArrayList<Player>();
-//
-//        for (String elems: parts){
-//            String player[] = elems.split(" - ");
-//            playersList.add(new Player(player[0],Integer.parseInt(player[1]) ));
-//        }
-//
-//        team.players = playersList;
-//    }
     private static void addTeamPair(List<TeamPair> teamPairList, TeamPair teamPair){
 
         boolean val = false;
@@ -95,14 +73,11 @@ public class Utils {
 
     public static List<TeamPair> equalizeTeams(Team team1, Team team2, List<Player> registeredPlayers){
         int triedIndex = 0;
-        int versionIndex = 0;
-       // String team1_ = null;
-       // String team2_= null;
         int diff = 600;
         int minDiff = -1;
         Team team1_ = null;
         Team team2_ = null;
-        TeamPair teamPair = new TeamPair();
+        TeamPair teamPair;
         List teamPairList = new ArrayList<TeamPair>();
 
         triedIndex = 0;
@@ -131,22 +106,8 @@ public class Utils {
                 team2_ = new Team(team2);
                 teamPair = new TeamPair(team1_, team2_);
                 addTeamPair(teamPairList, teamPair);
-                //teamPairList.add(teamPair);
-//                team1_ = saveTeamSnapShot(team1);
-//                team2_ = saveTeamSnapShot(team2);
             }
         }
-
-       // team1 = team1_;
-        //team2 = team2_;
-//        loadTeamSnapShot(team1_, team1);
-//        loadTeamSnapShot(team2_, team2);
-
-//        System.out.println(team1);
-//        System.out.println(team2);
-
-//        System.out.println("Tried: "+ triedIndex);
-//        System.out.println("Team difference: "+Math.abs(team1.getSkillSum() - team2.getSkillSum()));
         return teamPairList;
     }
 }
