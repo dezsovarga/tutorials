@@ -1,3 +1,5 @@
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -71,7 +73,7 @@ public class Utils {
 
     }
 
-    public static List<TeamPair> equalizeTeams(Team team1, Team team2, List<Player> registeredPlayers){
+    public static List<TeamPair> equalizeTeams(Team team1, Team team2, List<Player> registeredPlayers) throws IOException, URISyntaxException{
         int triedIndex = 0;
         int diff = 600;
         int minDiff = -1;
@@ -105,9 +107,44 @@ public class Utils {
                 team1_ = new Team(team1);
                 team2_ = new Team(team2);
                 teamPair = new TeamPair(team1_, team2_);
-                addTeamPair(teamPairList, teamPair);
+                if (isLegalTeamPair(teamPair)){
+                    addTeamPair(teamPairList, teamPair);
+                }
+
             }
         }
         return teamPairList;
+    }
+
+    private static boolean isLegalTeamPair(TeamPair teamPair) throws IOException, URISyntaxException{
+
+        List<String> separatedPlayers = FileReader.readFileByLines("stipulation.txt");
+        String p1 = "";
+        String p2 = "";
+
+        for (String sepPlayers:separatedPlayers){
+            p1 = sepPlayers.split(" ")[0];
+            p2 = sepPlayers.split(" ")[1];
+
+            if (contains(teamPair.getTeam2().players,p1) && contains(teamPair.getTeam2().players,p2)){
+                return false;
+            }
+
+            if (contains(teamPair.getTeam1().players,p1) && contains(teamPair.getTeam1().players,p2)){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private static boolean contains(ArrayList<Player> players, String playersName){
+
+        for (Player player:players){
+            if (player.getName().trim().equals(playersName)){
+                return true;
+            }
+        }
+        return false;
     }
 }

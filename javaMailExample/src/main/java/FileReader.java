@@ -17,9 +17,13 @@ public class FileReader {
 
     final static Charset ENCODING = StandardCharsets.UTF_8;
 
-    public static List<String> getRegisteredPlayerNames(String aFileName) throws IOException,URISyntaxException {
-        Path path = Paths. get( FileReader.class.getResource(aFileName).toURI());
+    public static List<String> readFileByLines(String aFileName) throws IOException,URISyntaxException {
+        Path path = Paths.get(FileReader.class.getResource(aFileName).toURI());
         return Files.readAllLines(path, ENCODING);
+    }
+
+    public static List<String> getRegisteredPlayerNames(String aFileName) throws IOException,URISyntaxException {
+        return readFileByLines(aFileName);
     }
 
 
