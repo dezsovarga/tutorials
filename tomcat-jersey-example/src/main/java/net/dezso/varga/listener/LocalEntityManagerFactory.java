@@ -14,11 +14,10 @@ import javax.servlet.annotation.WebListener;
 @WebListener
 public class LocalEntityManagerFactory implements ServletContextListener {
 	private static EntityManagerFactory emf;
-	@Override
+
 	public void contextInitialized(ServletContextEvent event) {
 		emf = Persistence.createEntityManagerFactory("jpa-example");
 	}
-	@Override
 	public void contextDestroyed(ServletContextEvent event) {
 		emf.close();
 	}
