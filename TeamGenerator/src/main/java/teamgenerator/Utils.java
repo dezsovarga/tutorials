@@ -3,6 +3,7 @@ package teamgenerator;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -14,17 +15,18 @@ public class Utils {
     public static List<Player> getRegisteredPlayers(List<String> playerNames, List<Player> allPlayers){
         List<Player> registeredPlayers = new ArrayList<Player>();
 
+        Iterator<String> playerNamesIt = playerNames.iterator();
         //adding new players directly to registered players list
-        for (String playerName: playerNames){
+        while (playerNamesIt.hasNext()) {
+            String playerName = playerNamesIt.next();
             if (playerName.contains(" ") ){
                 String playerItems[] = playerName.split(" ");
                 String name = playerItems[0];
                 int skill = Integer.parseInt(playerItems[1]);
                 registeredPlayers.add(new Player(name,skill));
-                playerNames.remove(playerName);
+                playerNamesIt.remove();
             }
         }
-
         for (Player player:allPlayers){
 
             for (String playerName:playerNames){
@@ -34,7 +36,6 @@ public class Utils {
             }
 
         }
-
         return registeredPlayers;
     }
 
