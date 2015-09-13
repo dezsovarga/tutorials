@@ -2,12 +2,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
  
-  <groupId>com.javamail</groupId>
-  <artifactId>maven-run-main-class</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <groupId>dezso.varga</groupId>
+  <artifactId>teamgenerator</artifactId>
+  <version>1.0</version>
+  <packaging>war</packaging>
  
-  <name>maven-run-main-class</name>
+  <name>teamgenerator</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -15,7 +15,7 @@
   </properties>
  
   <dependencies>
-	<dependency>
+	<!--<dependency>
 		<groupId>javax.activation</groupId>
 		<artifactId>activation</artifactId>
 		<version>1.1</version>
@@ -25,7 +25,7 @@
 		<groupId>javax.mail</groupId>
 		<artifactId>mail</artifactId>
 		<version>1.4</version>
-	</dependency>
+	</dependency>-->
 
       <dependency>
           <groupId>com.google.gdata</groupId>
@@ -105,7 +105,7 @@
             <configuration>
                 <archive>
                     <manifest>
-                        <mainClass>teamgenerator.Main</mainClass>
+                        <mainClass>dezso.varga.teamgenerator.Main</mainClass>
                     </manifest>
                 </archive>
                 <descriptorRefs>
@@ -142,7 +142,7 @@
 				</execution>
 			</executions>
 			<configuration>
-				<mainClass>SendMail</mainClass>
+				<mainClass>Main</mainClass>
 			</configuration>
         </plugin>
     </plugins>

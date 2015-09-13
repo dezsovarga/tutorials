@@ -1,4 +1,4 @@
-package teamgenerator;
+package dezso.varga.teamgenerator;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;

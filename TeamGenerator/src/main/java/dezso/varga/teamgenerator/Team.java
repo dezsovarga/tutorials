@@ -1,4 +1,4 @@
-package teamgenerator;
+package dezso.varga.teamgenerator;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -58,7 +58,7 @@ public class Team {
 
     @Override
     public String toString(){
-        String s="teamgenerator.Team " + name + " - "+getSkillSum() +"\n";
+        String s="Team " + name + " - "+getSkillSum() +"\n";
         for (Player player:players){
             s=s+(player.toString()/*+"\n"*/);
         }

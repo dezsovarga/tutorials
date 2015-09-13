@@ -1,4 +1,4 @@
-package teamgenerator;
+package dezso.varga.teamgenerator;
 
 import java.io.IOException;
 import java.lang.System;

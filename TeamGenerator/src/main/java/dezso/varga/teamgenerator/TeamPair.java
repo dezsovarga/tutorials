@@ -1,4 +1,4 @@
-package teamgenerator;
+package dezso.varga.teamgenerator;
 
 /**
  * Created by varga on 18.08.2015.
@@ -42,6 +42,6 @@ public class TeamPair {
 
     public String toString(){
 
-        return "teamgenerator.Team diff: " + getTeamDiff() + "\n" + team1 + "\n" + team2 + "\n";
+        return "Team diff: " + getTeamDiff() + "\n" + team1 + "\n" + team2 + "\n";
     }
 }
