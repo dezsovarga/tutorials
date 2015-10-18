@@ -1,15 +1,21 @@
 package dezso.varga.teamgenerator.domain;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.ArrayList;
 import java.util.Random;
 
 /**
  * Created by dezsovarga on 5/7/15.
  */
+@XmlRootElement
 public class Team {
 
     String name;
     ArrayList<Player> players = new ArrayList<Player>();
+    public Team(){
+
+    }
 
     public Team(String name) {
         this.name = name;
@@ -55,6 +61,24 @@ public class Team {
         }
         return sum;
     }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(ArrayList<Player> players) {
+        this.players = players;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
 
     @Override
     public String toString(){

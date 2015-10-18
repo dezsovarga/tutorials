@@ -29,6 +29,5 @@ public class Main
         for (TeamPair teamP:teamPairs){
                 System.out.println(teamP);
         }
-
 	}
 }

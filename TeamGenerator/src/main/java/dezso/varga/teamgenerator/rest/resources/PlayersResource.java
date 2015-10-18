@@ -1,12 +1,10 @@
-package dezso.varga.teamgenerator.server.resources;
+package dezso.varga.teamgenerator.rest.resources;
 
 import dezso.varga.teamgenerator.domain.Player;
-import dezso.varga.teamgenerator.rest.service.PlayerService;
+import dezso.varga.teamgenerator.rest.services.PlayerService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -21,17 +19,13 @@ public class PlayersResource {
     PlayerService playerService = new PlayerService();
 
     @GET
-//    @Produces(MediaType.APPLICATION_JSON)
     public List<Player> getPlayers() {
-
         return PlayerService.getAllPlayers();
-
     }
 
     @GET
     @Path("/{playerName}")
     public Player getPlayer(@PathParam("playerName") String playerName){
-
         return PlayerService.getPlayer(playerName);
     }
 

@@ -1,4 +1,4 @@
-package dezso.varga.teamgenerator.rest.service;
+package dezso.varga.teamgenerator.rest.services;
 
 import dezso.varga.teamgenerator.utils.GoogleDocReader;
 import dezso.varga.teamgenerator.domain.Player;

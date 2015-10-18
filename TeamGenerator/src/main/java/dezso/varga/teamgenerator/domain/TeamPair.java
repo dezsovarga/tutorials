@@ -1,8 +1,12 @@
 package dezso.varga.teamgenerator.domain;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
 /**
  * Created by varga on 18.08.2015.
  */
+@XmlRootElement
 public class TeamPair {
 
     private Team team1;
