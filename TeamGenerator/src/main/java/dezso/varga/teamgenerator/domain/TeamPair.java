@@ -1,4 +1,4 @@
-package dezso.varga.teamgenerator;
+package dezso.varga.teamgenerator.domain;
 
 /**
  * Created by varga on 18.08.2015.

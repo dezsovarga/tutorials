@@ -1,4 +1,4 @@
-package dezso.varga.teamgenerator;
+package dezso.varga.teamgenerator.domain;
 
 import java.util.ArrayList;
 import java.util.Random;

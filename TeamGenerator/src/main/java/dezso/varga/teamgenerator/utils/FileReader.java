@@ -1,4 +1,4 @@
-package dezso.varga.teamgenerator;
+package dezso.varga.teamgenerator.utils;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

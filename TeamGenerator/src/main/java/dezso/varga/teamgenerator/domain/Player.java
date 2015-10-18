@@ -1,12 +1,19 @@
-package dezso.varga.teamgenerator;
+package dezso.varga.teamgenerator.domain;
+
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Created by dezsovarga on 5/7/15.
  */
+@XmlRootElement
 public class Player {
 
     String name;
     int skill;
+
+    public Player(){
+
+    }
 
     public Player(String name, int skill) {
         this.name = name;

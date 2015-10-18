@@ -1,4 +1,6 @@
-package dezso.varga.teamgenerator;
+package dezso.varga.teamgenerator.domain;
+
+import dezso.varga.teamgenerator.utils.FileReader;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

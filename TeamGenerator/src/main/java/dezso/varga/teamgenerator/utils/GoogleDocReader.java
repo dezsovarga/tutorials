@@ -1,5 +1,6 @@
-package dezso.varga.teamgenerator;
+package dezso.varga.teamgenerator.utils;
 
+import dezso.varga.teamgenerator.domain.Player;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
