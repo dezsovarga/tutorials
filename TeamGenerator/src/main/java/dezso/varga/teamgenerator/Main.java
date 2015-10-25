@@ -1,5 +1,6 @@
 package dezso.varga.teamgenerator;
 
+import dezso.varga.teamgenerator.common.exceptions.PlayerNotFoundException;
 import dezso.varga.teamgenerator.domain.Player;
 import dezso.varga.teamgenerator.domain.Team;
 import dezso.varga.teamgenerator.domain.TeamPair;
@@ -14,7 +15,7 @@ import java.util.*;
 
 public class Main
 {
-	public static void main(String [] args) throws IOException, URISyntaxException{
+	public static void main(String [] args) throws IOException, URISyntaxException, PlayerNotFoundException{
 
         List<Player> allPlayers = new GoogleDocReader().getPlayersFromJson();
 

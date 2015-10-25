@@ -1,6 +1,7 @@
 package dezso.varga.teamgenerator.rest.resources;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dezso.varga.teamgenerator.common.exceptions.PlayerNotFoundException;
 import dezso.varga.teamgenerator.domain.Player;
 import dezso.varga.teamgenerator.domain.Team;
 import dezso.varga.teamgenerator.domain.TeamPair;

@@ -1,5 +1,6 @@
 package dezso.varga.teamgenerator.domain;
 
+import dezso.varga.teamgenerator.common.exceptions.PlayerNotFoundException;
 import dezso.varga.teamgenerator.utils.FileReader;
 
 import java.io.IOException;
@@ -14,7 +15,7 @@ import java.util.Random;
  */
 public class Utils {
 
-    public static List<Player> getRegisteredPlayers(List<String> playerNames, List<Player> allPlayers){
+    public static List<Player> getRegisteredPlayers(List<String> playerNames, List<Player> allPlayers) {
         List<Player> registeredPlayers = new ArrayList<Player>();
 
         Iterator<String> playerNamesIt = playerNames.iterator();
@@ -29,14 +30,19 @@ public class Utils {
                 playerNamesIt.remove();
             }
         }
-        for (Player player:allPlayers){
 
-            for (String playerName:playerNames){
+        for (String playerName:playerNames){
+            boolean foundPlayer = false;
+            for (Player player:allPlayers){
                 if (player.getName().toUpperCase().contains(playerName.toUpperCase())){
                     registeredPlayers.add(player);
+                    foundPlayer = true;
                 }
             }
-
+            if (!foundPlayer){
+                throw new PlayerNotFoundException(playerName + " was not found in the google doc. " +
+                        "Doublecheck the player's name.");
+            }
         }
         return registeredPlayers;
     }
