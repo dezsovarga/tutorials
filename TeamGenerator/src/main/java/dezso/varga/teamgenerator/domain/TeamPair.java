@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * Created by varga on 18.08.2015.
  */
 @XmlRootElement
-public class TeamPair {
+public class TeamPair implements Comparable<TeamPair> {
 
     private Team team1;
     private Team team2;
@@ -47,5 +47,10 @@ public class TeamPair {
     public String toString(){
 
         return "Team diff: " + getTeamDiff() + "\n" + team1 + "\n" + team2 + "\n";
+    }
+
+    public int compareTo(TeamPair compareTeamPair){
+        int compareDiff = compareTeamPair.getTeamDiff();
+        return this.getTeamDiff() - compareDiff;
     }
 }

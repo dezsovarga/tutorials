@@ -5,10 +5,7 @@ import dezso.varga.teamgenerator.utils.FileReader;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by dezsovarga on 5/7/15.
@@ -91,7 +88,7 @@ public class Utils {
         Team team1_ = null;
         Team team2_ = null;
         TeamPair teamPair;
-        List teamPairList = new ArrayList<TeamPair>();
+        List<TeamPair> teamPairList = new ArrayList<TeamPair>();
 
         triedIndex = 0;
         while (Math.abs(team1.getSkillSum() - team2.getSkillSum()) >= minDiff){
@@ -124,6 +121,7 @@ public class Utils {
 
             }
         }
+        Collections.sort(teamPairList);
         return teamPairList;
     }
 

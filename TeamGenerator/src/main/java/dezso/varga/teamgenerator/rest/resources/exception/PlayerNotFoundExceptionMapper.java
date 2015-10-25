@@ -1,4 +1,4 @@
-package dezso.varga.teamgenerator.rest.resources;
+package dezso.varga.teamgenerator.rest.resources.exception;
 
 import dezso.varga.teamgenerator.common.exceptions.PlayerNotFoundException;
 import dezso.varga.teamgenerator.domain.ErrorMessage;
