@@ -29,6 +29,7 @@ public class TeamPair implements Comparable<TeamPair> {
 
         this.team1 = team1;
         this.team2 = team2;
+        teamDiff = getTeamDiff();
     }
 
     public void setTeam1(Team team1) {

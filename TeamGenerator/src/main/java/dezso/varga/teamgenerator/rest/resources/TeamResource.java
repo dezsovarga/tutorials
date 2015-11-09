@@ -26,6 +26,7 @@ public class TeamResource {
 
     @POST
     @Path("/generate")
+
     @Consumes(MediaType.APPLICATION_JSON)
     public List<TeamPair> generateTeams(String registeredPlayersJson) throws IOException, URISyntaxException {
 
