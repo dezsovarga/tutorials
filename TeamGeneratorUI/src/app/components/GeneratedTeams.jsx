@@ -18,38 +18,26 @@ var GeneratedTeams = React.createClass({
     displayTeams: function(){
 
         var teamList = this.props.teams.length === 0 ? [] : $.parseJSON(this.props.teams);
-
         var that = this;
-
         var teamsList = teamList.map(function(teamPair){
-
             return (
                 <div>
-
                     <div> TeamDiff: {teamPair.teamDiff}</div>
                     <br/>
                     <div>
                         {teamPair.team1.name}:
                         {that.displayTeamPlayers(teamPair.team1.players)}
                     </div>
-
                     <br/>
-
                     <div>
                         {teamPair.team2.name}:
                         {that.displayTeamPlayers(teamPair.team2.players)}
                     </div>
-
-
                     <hr/>
-
-
                 </div>
-
             );
         });
-
-        return teamsList;
+        return this.props.errorMessage ? this.props.errorMessage : teamsList;
     },
 
     render : function(){

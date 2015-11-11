@@ -1,4 +1,4 @@
-.center {
+.centerApp {
     margin: auto;
     width: 30%;
     //border:3px solid #73AD21;
@@ -16,4 +16,9 @@
 
 .right {
     float:right;
+}
+
+.center {
+    width: 90%;
+    margin: 0 auto;
 }

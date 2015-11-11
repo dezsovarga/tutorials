@@ -32,6 +32,9 @@ public class TeamResource {
 
         List<String> registeredPlayerNames = mapper.readValue(registeredPlayersJson, mapper.getTypeFactory().
                 constructCollectionType(List.class, String.class));
+        if (registeredPlayerNames.size() == 1 && registeredPlayerNames.get(0).toString().equals("")){
+            registeredPlayerNames.clear();
+        }
         List<Player> registeredPlayers = Utils.getRegisteredPlayers(registeredPlayerNames, PlayerService.getAllPlayers());
 
         Team team1 = Utils.generateRandomTeam(registeredPlayers,registeredPlayers.size()/2,"team1");

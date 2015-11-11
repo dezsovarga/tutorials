@@ -45,6 +45,10 @@ public class TeamPair implements Comparable<TeamPair> {
         return Math.abs(team1.getSkillSum() - team2.getSkillSum());
     }
 
+    public void setTeamDiff(int teamDiff) {
+        this.teamDiff = teamDiff;
+    }
+
     public String toString(){
 
         return "Team diff: " + getTeamDiff() + "\n" + team1 + "\n" + team2 + "\n";
