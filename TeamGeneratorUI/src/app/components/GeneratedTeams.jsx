@@ -1,6 +1,7 @@
 /**
  * Created by varga on 09.11.2015.
  */
+
 var GeneratedTeams = React.createClass({
 
     displayTeamPlayers: function(team){

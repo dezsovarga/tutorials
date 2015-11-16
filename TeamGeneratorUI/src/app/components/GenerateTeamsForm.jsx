@@ -1,25 +1,4 @@
-/**
- * Created by varga on 10.11.2015.
- */
-//var RegPlayersTextArea = React.createClass({
-//    render: function(){
-//        return(
-//            <div>
-//                <div className="center" id="regPlayersTextArea">
-//                    <textarea placeholder="Put here the registered player names"
-//                              name="description" rows="15" cols="25" ref="registeredPlayers">
-//
-//                    </textarea>
-//                </div>
-//                <div className="center">
-//                    <button onClick={this.props.handleClickGenerate}> Generate </button>
-//                </div>
-//
-//            </div>
-//        )
-//    }
-//
-//});
+
 var GenerateTeamsForm = React.createClass({
 
     getInitialState: function() {
