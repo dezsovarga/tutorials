@@ -1,10 +1,10 @@
 /**
  * Created by varga on 09.11.2015.
  */
+import React from 'react';
+class GeneratedTeams extends React.Component{
 
-var GeneratedTeams = React.createClass({
-
-    displayTeamPlayers: function(team){
+    displayTeamPlayers(team){
 
         var playerList = team.map(function(player) {
 
@@ -14,9 +14,9 @@ var GeneratedTeams = React.createClass({
         });
 
         return playerList;
-    },
+    }
 
-    displayTeams: function(){
+    displayTeams(){
 
         var teamList = this.props.teams.length === 0 ? [] : $.parseJSON(this.props.teams);
         var that = this;
@@ -39,9 +39,9 @@ var GeneratedTeams = React.createClass({
             );
         });
         return this.props.errorMessage ? this.props.errorMessage : teamsList;
-    },
+    }
 
-    render : function(){
+    render(){
 
         return (
             <div>
@@ -50,4 +50,6 @@ var GeneratedTeams = React.createClass({
 
         );
     }
-});
+}
+
+export default GeneratedTeams;

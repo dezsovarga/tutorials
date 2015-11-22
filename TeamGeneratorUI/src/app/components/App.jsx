@@ -1,62 +1,48 @@
-//var Route = require('react-router').Route
-var Router = ReactRouter.Router;
-var Route = ReactRouter.Route;
-var App = React.createClass({
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Router, Route, RouteHandler, DefaultRoute} from 'react-router';
+import PlayersList from './PlayersList.jsx';
+import GenerateTeamsForm from './GenerateTeamsForm.jsx';
+import HeaderMenu from './HeaderMenu.jsx';
 
-    getInitialState: function() {
+class App extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            players: [],
+            teams: []
+        };
+    }
+
+
+    getInitialState() {
         return {
             players: [],
             teams: []
         };
-    },
+    }
 
-    loadPlayersFromServer: function() {
-        $.ajax({
-            type: "GET",
-            url: this.props.url,
-            dataType: 'json',
-            cache: false,
-            success: function(data) {
-                this.setState({players: data});
-            }.bind(this),
-            error: function(xhr, status, err) {
-                console.error(this.props.url, status, err.toString());
-            }.bind(this)
-        });
-    },
+    render(){
 
-
-
-    componentDidMount: function() {
-        //this.loadPlayersFromServer();
-        //setInterval(this.loadPlayersFromServer, this.props.pollInterval);
-    },
-
-
-
-    render: function(){
-        var playersList = this.state.players.map(function (player){
-
-            return (
-                <div key={player.name}>
-                        <span className="left"> {player.name} </span>
-                        <span className="right"> {player.skill} </span>
-                <br/>
-                </div>
-            );
-        });
         return (
-            <div class>
                 <div id='cssmenu'>
                     <HeaderMenu />
+
                     {this.props.children}
                 </div>
-
-
-            </div>
         );
     }
-});
+};
+
+//var routes = (
+//    <Route name="app" path="/" handler={App}>
+//        <Route name="players" path="/players" handler={PlayersList}/>
+//    </Route>
+//);
+//
+//ReactDOM.render(<Router>{routes}</Router>, document.getElementById('teamgenerator'));
 
 ReactDOM.render(
 
@@ -67,8 +53,7 @@ ReactDOM.render(
         </Route>
     </Router>), document.getElementById('teamgenerator')
 
-    //<App url="http://localhost/rest/players" pollInterval={5000}/>,
-    //document.getElementById('teamgenerator')
+
 );
 
 //render((

@@ -1,24 +1,27 @@
+import React from 'react';
+import GeneratedTeams from './GeneratedTeams.jsx';
+class GenerateTeamsForm extends React.Component {
 
-var GenerateTeamsForm = React.createClass({
+    constructor(props) {
+        super(props);
 
-    getInitialState: function() {
-        return {
+        this.state = {
             players: [],
             teams: [],
             showTextarea :true,
             errorMessage: ""
         };
-    },
+    }
 
-    handleClickGenerate: function() {
+    handleClickGenerate() {
 
         var regPlayers = this.refs.registeredPlayers.value.split("\n");
         this.generateTeamsFromServer(regPlayers);
         this.setState({showTextarea:false})
 
-    },
+    }
 
-    generateTeamsFromServer: function(body){
+    generateTeamsFromServer(body){
 
         var generateTeamsUrl = "http://localhost/rest/teams/generate";
         $.ajax({
@@ -36,9 +39,9 @@ var GenerateTeamsForm = React.createClass({
                 this.setState({errorMessage: xhr.responseText});
             }.bind(this)
         });
-    },
+    }
 
-    displayRegPlayersForm: function(){
+    displayRegPlayersForm(){
         return (
             <div>
                 <div className="center" id="regPlayersTextArea">
@@ -48,14 +51,14 @@ var GenerateTeamsForm = React.createClass({
                     </textarea>
                 </div>
                 <div className="center">
-                    <button onClick={this.handleClickGenerate}> Generate </button>
+                    <button onClick={this.handleClickGenerate.bind(this)}> Generate </button>
                 </div>
 
             </div>
         )
-    },
+    }
 
-    render: function(){
+    render(){
         var textArea = this.state.showTextarea ? this.displayRegPlayersForm() : "";
 
         return(
@@ -63,7 +66,10 @@ var GenerateTeamsForm = React.createClass({
                 <br/>
                 {textArea}
                 <GeneratedTeams teams={this.state.teams} errorMessage={this.state.errorMessage}/>
+
             </div>
         )
     }
-});
+}
+
+export default GenerateTeamsForm;
