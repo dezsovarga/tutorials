@@ -8,7 +8,10 @@ import dezso.varga.teamgenerator.domain.TeamPair;
 import dezso.varga.teamgenerator.domain.Utils;
 import dezso.varga.teamgenerator.rest.services.PlayerService;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -28,7 +31,7 @@ public class TeamResource {
     @Path("/generate")
 
     @Consumes(MediaType.APPLICATION_JSON)
-    public List<TeamPair> generateTeams(String registeredPlayersJson) throws IOException, URISyntaxException {
+    public List<TeamPair> generateTeams(@Context HttpHeaders header, @Context HttpServletResponse response, String registeredPlayersJson) throws IOException, URISyntaxException {
 
         List<String> registeredPlayerNames = mapper.readValue(registeredPlayersJson, mapper.getTypeFactory().
                 constructCollectionType(List.class, String.class));
@@ -41,6 +44,8 @@ public class TeamResource {
         Team team2 = Utils.generateRandomTeam(registeredPlayers,registeredPlayers.size(),"team2");
 
         List<TeamPair> teamPairs = Utils.equalizeTeams(team1, team2, registeredPlayers);
+
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
         return teamPairs;
     }

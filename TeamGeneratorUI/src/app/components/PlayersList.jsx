@@ -2,6 +2,7 @@
  * Created by varga on 10.11.2015.
  */
 import React from 'react';
+import {Table} from 'react-bootstrap';
 //import ReactDOM from 'react-dom';
 class PlayersList extends React.Component {
 
@@ -40,20 +41,43 @@ class PlayersList extends React.Component {
         });
     }
 
-    render(){
-        var playersList = this.state.players.map(function (player){
+    getPlayersTable(){
+
+        var playerRows = this.state.players.map(function (player){
 
             return (
-                <div key={player.name}>
-                    <span className="left"> {player.name} </span>
-                    <span className="right"> {player.skill} </span>
-                    <br/>
-                </div>
+                <tr>
+                    <td>{player.name} </td>
+                    <td>{player.skill} </td>
+                    <td> initialskill </td>
+                </tr>
             );
         });
+
+        return (
+
+            <Table responsive>
+                <thead>
+                    <tr>
+                        <th> Name </th>
+                        <th> Skill </th>
+                        <th> Initial skill </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {playerRows}
+                </tbody>
+            </Table>
+
+        )
+
+    }
+
+    render(){
+        
         return(
 
-            <div>{playersList}</div>
+            <div>{this.getPlayersTable()}</div>
         )
     }
 }

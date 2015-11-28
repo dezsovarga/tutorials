@@ -2,7 +2,7 @@
  * Created by varga on 10.11.2015.
  */
 import React from 'react';
-import {Link, RouteHandler} from 'react-router';
+import {Link} from 'react-router';
 
 class HeaderMenu extends React.Component {
 
@@ -13,7 +13,7 @@ class HeaderMenu extends React.Component {
                 <ul>
                     <li className='active'><Link to="/generate"><span>Generate</span></Link></li>
                     <li><Link to="/players"><span>Players</span></Link></li>
-                    <li><Link to="/players"><span>Statistics</span></Link></li>
+                    <li><Link to="/players"><span>Statisticssss</span></Link></li>
                     <li className='last'><Link to="/players"><span>History</span></Link></li>
                 </ul>
 

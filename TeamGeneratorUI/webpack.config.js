@@ -2,6 +2,8 @@ module.exports ={
     entry: "./src/app/components/App.jsx",
     output: {
         path: "./build",
+        publicPath: "/public/",
+        //publicPath: "http://localhost/",
         filename: "bundle.js"
     },
     debug: true,
@@ -18,5 +20,18 @@ module.exports ={
             }
         },
         ]
+    },
+
+    devServer: {
+        proxy: {
+            '/rest*': {
+                target: 'http://localhost:8082/',
+                secure: false,
+
+            },
+        },
+        headers: { 'Access-Control-Allow-Origin': '*',
+                   'Access-Control-Allow-Headers': '*'
+        }
     }
 }

@@ -27,6 +27,7 @@ class GenerateTeamsForm extends React.Component {
         $.ajax({
             type: "POST",
             url: generateTeamsUrl,
+
             dataType: 'json',
             contentType: 'application/json',
             cache: false,
