@@ -70,6 +70,7 @@ public class GoogleDocReader {
         Player player;
         String playerName;
         int playerSkill;
+        int playerInitSkill;
         List<Player> playersList = new ArrayList<Player>();
         JSONObject obj = getPlayersJson();
         JSONObject table = obj.getJSONObject("table");
@@ -81,7 +82,8 @@ public class GoogleDocReader {
             JSONArray c = elements.getJSONArray("c");
             playerName = ((JSONObject)c.get(0)).get("v").toString();
             playerSkill = (int) (Double.parseDouble( ((JSONObject) c.get(1)).get("v").toString()) * 100) ;
-            player = new Player(playerName, playerSkill);
+            playerInitSkill = (int) (Double.parseDouble( ((JSONObject) c.get(3)).get("v").toString()) * 100) ;
+            player = new Player(playerName, playerSkill, playerInitSkill);
             playersList.add(player);
         }
 

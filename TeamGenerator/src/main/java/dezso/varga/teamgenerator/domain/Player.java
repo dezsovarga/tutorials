@@ -10,6 +10,7 @@ public class Player {
 
     String name;
     int skill;
+    int initSkill;
 
     public Player(){
 
@@ -18,6 +19,12 @@ public class Player {
     public Player(String name, int skill) {
         this.name = name;
         this.skill = skill;
+    }
+
+    public Player(String name, int skill, int initSkill) {
+        this.name = name;
+        this.skill = skill;
+        this.initSkill = initSkill;
     }
 
     public String getName() {
@@ -34,6 +41,14 @@ public class Player {
 
     public void setSkill(int skill) {
         this.skill = skill;
+    }
+
+    public int getInitSkill() {
+        return initSkill;
+    }
+
+    public void setInitSkill(int initSkill) {
+        this.initSkill = initSkill;
     }
 
     public String toString(){

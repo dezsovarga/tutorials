@@ -5,10 +5,10 @@
     //padding: 10px;
 }
 
-#players {
+/*#players {
     margin: auto;
     width: 50%;
- }
+ }*/
 
 .left {
     float: left;
@@ -18,7 +18,66 @@
     float:right;
 }
 
-.center {
+/*.center {
     width: 90%;
     margin: 0 auto;
+}*/
+
+.players_list {
+    /*background-color: yellow;*/
+    width: 70%;
+    margin: 10px auto;
+}
+
+.players_list td {
+    text-align: center;
+}
+
+.players_list th {
+    text-align: center;
+}
+
+.players_list.players_name {
+
+    text-align: left;
+    width: 50%;
+}
+
+.players_list.players_skill {
+
+    width: 10%;
+}
+
+.players_list.players_init_skill {
+
+    width: 10%;
+}
+
+.players_list.players_position {
+
+    width: 5%;
+}
+
+/*.pagination {
+    background-color: orange;
+    width: 70%;
+    margin: 10px auto;
+}*/
+
+.pagination .page-info {
+    display: inline-block;
+    padding: 0 5px 0 5px;
+}
+
+.pagination .page {
+    display: inline-block;
+    padding: 0 5px 0 5px;
+}
+
+.pagination div {
+    font-style: italic;
+    font-weight: 600;
+    color: cornflowerblue;
+    display: block;
+    margin: auto;
 }
