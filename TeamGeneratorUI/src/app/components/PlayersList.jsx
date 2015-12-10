@@ -13,6 +13,7 @@ class PlayersList extends React.Component {
             players: [],
             currentPage:0,
             perPage: 15,
+            descOrder: true
         };
     }
 
@@ -50,12 +51,15 @@ class PlayersList extends React.Component {
         // this is always sorting ascending
         this.state.players = _.sortBy( this.state.players, (player)=> {
          
+            if (column == 'diff') {
+                return player.initSkill - player.skill;
+            }
+
             if (column == 'name') {
                 return player.name.toLowerCase();
             }
 
             if (column == 'skill') {
-                this.state.descOrder = true;
                 return player.skill;
             }
 
@@ -141,16 +145,28 @@ class PlayersList extends React.Component {
             );
         });
 
+        var sortingIcon = (
+            <span className={'glyphicon glyphicon-triangle-'+ (this.state.descOrder?'top':'bottom')}></span>
+        );
+
         return [
 
             <Table responsive striped bordered condensed hover className="players_list"/*className="table table-striped table-bordered"*/ >
                 <thead>
                     <tr>
                         <th> Pos </th>
-                        <th> Name </th>
-                        <th> Initial skill </th>
-                        <th> +/- </th>
-                        <th> Skill </th>
+                         <th onClick={this.sortBy.bind(this,'name')}> 
+                            Name {this.state.sortBy === 'name'?sortingIcon:null} 
+                        </th>
+                        <th onClick={this.sortBy.bind(this,'initSkill')}> 
+                            Initial skill {this.state.sortBy === 'initSkill'?sortingIcon:null} 
+                        </th>
+                        <th onClick={this.sortBy.bind(this,'diff')}> 
+                            +/- {this.state.sortBy === 'diff'?sortingIcon:null} 
+                        </th>
+                        <th onClick={this.sortBy.bind(this,'skill')}> 
+                            Skill {this.state.sortBy === 'skill'?sortingIcon:null} 
+                        </th>
                         
                     </tr>
                 </thead>

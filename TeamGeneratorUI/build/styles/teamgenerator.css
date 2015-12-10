@@ -72,12 +72,14 @@
 .pagination .page {
     display: inline-block;
     padding: 0 5px 0 5px;
+    cursor: pointer;
+    
 }
 
-.pagination div {
+/*.pagination div {
     font-style: italic;
     font-weight: 600;
     color: cornflowerblue;
     display: block;
     margin: auto;
-}
+}*/
