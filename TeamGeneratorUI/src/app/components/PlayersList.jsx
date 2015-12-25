@@ -131,11 +131,12 @@ class PlayersList extends React.Component {
         var currentPageData = this.state.players.slice(
           this.state.currentPage * this.state.perPage, (this.state.currentPage+1)* this.state.perPage);
 
+        var self = this;
         var playerRows = currentPageData.map(function (player, index){
 
             return (
                 <tr>
-                    <td className="players_list players_position"> {index +1}.</td>
+                    <td className="players_list players_position"> {self.state.perPage * self.state.currentPage + index +1}.</td>
                     <td className="players_list players_name">{player.name} </td>
                     <td className="players_list players_init_skill"> {player.initSkill/100} </td>
                     <td className="players_list players_init_skill"> {(player.skill - player.initSkill)/100} </td>
