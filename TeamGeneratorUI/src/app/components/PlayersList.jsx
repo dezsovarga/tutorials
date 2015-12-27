@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import {Table} from 'react-bootstrap';
+import PlayersService from 'services/PlayersService';
 //import ReactDOM from 'react-dom';
 class PlayersList extends React.Component {
 
@@ -29,7 +30,7 @@ class PlayersList extends React.Component {
         //setInterval(this.loadPlayersFromServer, this.props.pollInterval);
     }
 
-    loadPlayersFromServer() {
+   /* loadPlayersFromServer() {
         var url="http://localhost/rest/players";
         $.ajax({
             type: "GET",
@@ -44,6 +45,17 @@ class PlayersList extends React.Component {
                 console.error(url, status, err.toString());
             }.bind(this)
         });
+    }*/
+
+    loadPlayersFromServer() {
+        PlayersService.instance.getAllPlayers()
+            .success((data) => {
+               this.setState({players: data});
+                this.sortBy('skill');
+            })
+            .error((xhr, status, err) => {
+              console.error(status, err.toString());
+            });;
     }
 
     sortBy(column) {

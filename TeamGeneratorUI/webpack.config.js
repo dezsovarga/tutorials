@@ -19,6 +19,14 @@ module.exports ={
                 presets:['es2015','react']
             }
         },
+        { test: /\.js$/, 
+            exclude: /node_modules/, 
+            loader: 'babel-loader', 
+            query: {
+                presets: ['es2015']
+            }
+        }
+
         ]
     },
 
@@ -33,5 +41,14 @@ module.exports ={
         headers: { 'Access-Control-Allow-Origin': '*',
                    'Access-Control-Allow-Headers': '*'
         }
+    },
+
+    resolve: {
+    extensions: ['', '.js'],
+    alias: {
+      'commons': __dirname + '/src/app/commons',
+      'services': __dirname + '/src/app/services',
+      'images': __dirname + '/src/app/images'
     }
+  },
 }
