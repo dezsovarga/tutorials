@@ -39,6 +39,20 @@ class ApiWrapper {
             contentType: 'application/json'
         });
     }
+
+    POST(url, data , params, additionalHeaders) {
+
+        return $.ajax({
+            headers: _.extend({
+                'Content-Type': 'application/json'
+            }, additionalHeaders),
+            url: this.baseUrl + url + (params ? '?' + params : '' ),
+            async: true,
+            type: 'POST',
+            contentType: 'application/json',
+            data: data
+        });
+    }
 }
 
 export default ApiWrapper;

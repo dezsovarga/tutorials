@@ -1,5 +1,6 @@
 import React from 'react';
 import GeneratedTeams from './GeneratedTeams.jsx';
+import TeamsService from 'services/TeamsService';
 class GenerateTeamsForm extends React.Component {
 
     constructor(props) {
@@ -21,25 +22,37 @@ class GenerateTeamsForm extends React.Component {
 
     }
 
-    generateTeamsFromServer(body){
+    // generateTeamsFromServer(body){
 
-        var generateTeamsUrl = "http://localhost/rest/teams/generate";
-        $.ajax({
-            type: "POST",
-            url: generateTeamsUrl,
+    //     var generateTeamsUrl = "http://localhost/rest/teams/generate";
+    //     $.ajax({
+    //         type: "POST",
+    //         url: generateTeamsUrl,
 
-            dataType: 'json',
-            contentType: 'application/json',
-            cache: false,
-            data: JSON.stringify(body),
-            success: function(data) {
-                this.setState({teams: JSON.stringify(data)});
-            }.bind(this),
-            error: function(xhr, status, err) {
+    //         dataType: 'json',
+    //         contentType: 'application/json',
+    //         cache: false,
+    //         data: JSON.stringify(body),
+    //         success: function(data) {
+    //             this.setState({teams: JSON.stringify(data)});
+    //         }.bind(this),
+    //         error: function(xhr, status, err) {
+    //             console.error(generateTeamsUrl, status, err.toString());
+    //             this.setState({errorMessage: xhr.responseText});
+    //         }.bind(this)
+    //     });
+    // }
+
+    generateTeamsFromServer(players){
+
+       TeamsService.instance.generateTeams(JSON.stringify(players))
+            .success((data) => {
+               this.setState({teams: JSON.stringify(data)});
+            })
+            .error((xhr, status, err) => {
                 console.error(generateTeamsUrl, status, err.toString());
                 this.setState({errorMessage: xhr.responseText});
-            }.bind(this)
-        });
+            });
     }
 
     displayRegPlayersForm(){

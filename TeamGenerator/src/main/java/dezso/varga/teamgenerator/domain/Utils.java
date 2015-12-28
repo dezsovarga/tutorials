@@ -19,8 +19,8 @@ public class Utils {
         //adding new players directly to registered players list
         while (playerNamesIt.hasNext()) {
             String playerName = playerNamesIt.next();
-            if (playerName.contains(" ") ){
-                String playerItems[] = playerName.split(" ");
+            if (playerName.contains("  ") ){
+                String playerItems[] = playerName.split("  ");
                 String name = playerItems[0];
                 int skill = Integer.parseInt(playerItems[1]);
                 registeredPlayers.add(new Player(name,skill));
