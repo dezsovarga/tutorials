@@ -2,8 +2,9 @@
  * Created by varga on 10.11.2015.
  */
 import React from 'react';
-import {Table} from 'react-bootstrap';
+import {Table, Alert} from 'react-bootstrap';
 import PlayersService from 'services/PlayersService';
+import LoaderComponent from './common/Loader.jsx';
 //import ReactDOM from 'react-dom';
 class PlayersList extends React.Component {
 
@@ -14,7 +15,8 @@ class PlayersList extends React.Component {
             players: [],
             currentPage:0,
             perPage: 15,
-            descOrder: true
+            descOrder: true,
+            loaded: false
         };
     }
 
@@ -50,10 +52,14 @@ class PlayersList extends React.Component {
     loadPlayersFromServer() {
         PlayersService.instance.getAllPlayers()
             .success((data) => {
-               this.setState({players: data});
+               this.setState({
+                players: data,
+                loaded: true
+            });
                 this.sortBy('skill');
             })
             .error((xhr, status, err) => {
+                this.handleApiErrors(xhr);
               console.error(status, err.toString());
             });;
     }
@@ -191,16 +197,55 @@ class PlayersList extends React.Component {
                 {this.getPagesFooter()}
             </div>
         ];
+    }
 
-        
+    getErrorMessage() {
+        if (this.state.errorMessage) {
+            return (
+                <Alert bsStyle='danger'>
+                    <h4>Failure</h4>
+                    <p>{this.state.errorMessage}</p>
+                </Alert>
+            );
+        }
+        return null;
+    }
 
+    handleApiErrors(response) {
+        var message;
+        try {
+            if (response.statusText === 'timeout') {
+                message = 'Timeout error, application server is not responding.';
+            } else {
+            message = JSON.parse(response.responseText).reason;
+            }            
+        }
+        catch(err) {
+            message = response.responseText;
+        }
+
+        this.setState({
+            saving: false,
+            successMessage: null,
+            loaded: true,
+            errorMessage: message
+        });
     }
 
     render(){
         
+        if (!this.state.loaded) {
+            return (
+                <LoaderComponent />
+            );
+        }
         return(
 
-            <div>{this.getPlayersTable()}</div>
+            <div>
+                {this.getPlayersTable()}
+                {this.getErrorMessage()}
+            </div>
+
         )
     }
 }

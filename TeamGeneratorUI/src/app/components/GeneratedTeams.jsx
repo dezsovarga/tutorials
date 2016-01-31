@@ -1,6 +1,7 @@
 /**
  * Created by varga on 09.11.2015.
  */
+import {Alert} from 'react-bootstrap';
 import React from 'react';
 class GeneratedTeams extends React.Component{
 
@@ -38,7 +39,19 @@ class GeneratedTeams extends React.Component{
                 </div>
             );
         });
-        return this.props.errorMessage ? this.props.errorMessage : teamsList;
+        return this.props.errorMessage ? this.getErrorMessage()  : teamsList;
+    }
+
+    getErrorMessage() {
+        if (this.props.errorMessage) {
+            return (
+                <Alert bsStyle='danger'>
+                    <h4>Failure</h4>
+                    <p>{this.props.errorMessage}</p>
+                </Alert>
+            );
+        }
+        return null;
     }
 
     render(){

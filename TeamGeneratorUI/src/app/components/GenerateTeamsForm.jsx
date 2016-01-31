@@ -45,13 +45,14 @@ class GenerateTeamsForm extends React.Component {
 
     generateTeamsFromServer(players){
 
-       TeamsService.instance.generateTeams(JSON.stringify(players))
+        var generateTeamsUrl = "http://localhost/rest/teams/generate";
+        TeamsService.instance.generateTeams(JSON.stringify(players))
             .success((data) => {
                this.setState({teams: JSON.stringify(data)});
             })
             .error((xhr, status, err) => {
                 console.error(generateTeamsUrl, status, err.toString());
-                this.setState({errorMessage: xhr.responseText});
+                this.setState({errorMessage: xhr.responseJSON.errorMessage});
             });
     }
 
